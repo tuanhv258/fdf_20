@@ -21,3 +21,33 @@
 
 en:
   hello: "Hello world"
+  layouts:
+    footer:
+      copyright: "© 2016 Copyright Education Division"
+    header:
+      menu: "Menu"
+      order: "Order"
+      promotion: "Promotion"
+      signup: "Sign Up"
+      signin: "Sign In"
+      signout: "Sign Out"
+      edit_profile: "Edit Profile"
+  pages:
+    home:
+      fooddrink: "Food & Drink"
+      text: "Parallax is an effect where the background content or image in this case,
+        is moved at a different speed than the foreground content while scrolling."
+  devise:
+    sessions:
+      new:
+        signin: "Sign In"
+    registrations:
+      new:
+        signup: "Sign Up"
+    shared:
+      _link:
+        signup: "Sign Up"
+        signin: "Sign In"
+        forgot: "Forgot your password?"
+
+
