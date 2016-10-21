@@ -1,0 +1,62 @@
+<h4 class="condensed light"><%= t ".cat" %></h4>
+
+<div class="fixed-action-btn horizontal click-to-toggle size">
+  <a class="btn-floating btn-large red">
+    <i class="fa fa-bars" aria-hidden="true"></i>
+  </a>
+  <ul>
+    <li>
+      <a class="btn-floating red check-delete disabled">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li>
+      <a class="btn-floating green modal-trigger" onclick="add_cat()"
+        data-target="modal_add">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+<div id="modal_add" class="modal modal-fixed-footer">
+  <%= render "categories/add", object: @category %>
+</div>
+<table class="highlight bordered">
+  <thead class="yellow darken-4">
+  <tr>
+    <th><%= t ".index" %></th>
+    <th><%= t ".name" %></th>
+    <th><%= t ".numofpro" %></th>
+    <th><%= t ".delete" %></th>
+  </tr>
+  </thead>
+  <tbody>
+    <% @categories.each_with_index do |category, index| %>
+      <tr >
+        <td  data-category="<%= category.id %>" data-target="modal_<%= category.id %>"
+          class="modal-trigger show-detail">
+          <% if params[:page] ||= 1 %>
+            <%= index_for params[:page], index, Settings.categories_per_page %>
+          <% end %>
+        </td >
+        <td data-category="<%= category.id %>" data-target="modal_<%= category.id %>"
+          class="modal-trigger show-detail"><%= category.category_name %>
+        </td>
+        <td data-category="<%= category.id %>" data-target="modal_<%= category.id %>"
+          class="modal-trigger show-detail">
+          <%= category.products.length %>
+        </td>
+        <td>
+          <form>
+            <p>
+              <input type="checkbox" id="check_delete_<%= category.id %>"/>
+              <label></label>
+            </p>
+          </form>
+        </td>
+      </tr>
+      <%= render "categories/modal", object: category %>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @categories %>

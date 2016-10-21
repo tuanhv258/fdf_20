@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20161020022436) do
 
   create_table "suggest_products", force: :cascade do |t|
     t.integer  "user_id"
+    t.integer  "category_id"
     t.string   "product_name"
     t.string   "product_des"
     t.float    "product_price"
