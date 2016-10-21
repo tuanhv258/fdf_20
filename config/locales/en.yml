@@ -49,5 +49,28 @@ en:
         signup: "Sign Up"
         signin: "Sign In"
         forgot: "Forgot your password?"
-
-
+  categories:
+    add:
+      create: "Create new category"
+      createbtn: "Create"
+      closebtn: "Close"
+      createandcontinue: "Create and continue"
+    create:
+      failed: "Create failed"
+      success: "Create successful"
+    edit:
+      update: "Update category"
+      updatebtn: "Update"
+      closebtn: "Close"
+    modal:
+      catname: "Category Name"
+      des: "Description"
+      closebtn: "Close"
+      updatebtn: "Update"
+    index:
+      cat: "Category"
+      index: "Index"
+      name: "Name"
+      delete: "Delete"
+      numofpro: "Number of products"
+      numofsuggest: "Number of suggests"
