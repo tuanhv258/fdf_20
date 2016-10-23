@@ -1,0 +1,16 @@
+<h1 class="text-center"><%= t ".listuser" %></h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= t ".index" %></th>
+      <th><%= t ".fullname" %></th>
+      <th><%= t ".email" %></th>
+      <th><%= t ".delete" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @users %>
+  </tbody>
+</table>
+
+<%= paginate @users, theme: "twitter-bootstrap-3" %>

@@ -13,12 +13,13 @@
         <li><%= link_to t(".signup"), new_user_registration_path %></li>
       <% else %>
         <li>
-          <span id="show" onclick="openNav()"><%= current_user.fullname %></span>
+          <span id="show"><%= current_user.fullname %></span>
           <div id="mySidenav" class="sidenav">
-            <a id="hide" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <%= link_to current_user.fullname, "#" %>
-            <%= link_to current_user.email, "#" %>
+            <%= link_to "&times;".html_safe, "javascript:void(0)", id: "hide", class: "closebtn" %>
             <%= link_to t(".edit_profile"), edit_user_registration_path %>
+            <% if can? :show, @user %>
+              <%= link_to t(".show_list_user"), users_path %>
+            <% end %>
           </div>
         </li>
         <li>
