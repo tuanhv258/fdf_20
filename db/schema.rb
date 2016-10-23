@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20161020022436) do
     t.string   "date_of_birth"
     t.string   "address"
     t.string   "phone_number"
-    t.integer  "role"
+    t.integer  "role",                   default: 1
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "email",                  default: "", null: false
