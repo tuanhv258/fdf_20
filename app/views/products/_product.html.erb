@@ -1,0 +1,30 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th><%= t ".index" %></th>
+      <th><%= t ".image" %></th>
+      <th><%= t ".product_name" %></th>
+      <th><%= t ".description" %></th>
+      <th><%= t ".price" %></th>
+      <th><%= t ".quantity" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each_with_index do |product,index| %>
+      <tr>
+        <td>
+          <% if params[:page] ||= 1 %>
+            <%= index_for params[:page], index, Settings.product_per_page %>
+          <% end %>
+        </td>
+        <td><%= image_tag product.image.url if product.image? %></td>
+        <td><%= product.product_name %></td>
+        <td><%= product.description %></td>
+        <td><%= product.price %></td>
+        <td><%= product.quantity %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @products, theme: "twitter-bootstrap-3" %>

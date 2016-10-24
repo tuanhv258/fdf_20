@@ -1,0 +1,55 @@
+<div class="portlet grid grid-word contener-style">
+  <div class="portlet-title">
+    <div class="caption">
+      <span class="col-sm-2 list-ls-text"><%= t ".list_product"%></span>
+      <div class="grid-search col-sm-10 text-right">
+        <%= form_for @product do |f| %>
+          <div class="col-sm-4 no-padding-right">
+            <%= f.select :category_id,
+              options_from_collection_for_select(@categories, "id",
+              "category_name", {}),
+              {include_blank: t(".none")}, {class: "form-control"} %>
+          </div>
+          <div class="col-sm-2">
+            <button type="button" class="btn btn-primary"
+              data-toggle="modal" data-target="#modal-1">
+              <%= t(".create_product") %>
+            </button>
+            <div class="modal fade" id="modal-1">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                      &times;
+                    </button>
+                    <h3 class="modal-title"><%= t ".create_product" %></h3>
+                  </div>
+                  <div class="modal-body">
+                    <%= f.file_field :image,
+                      accept: "image/jpeg, image/gif, image/png, image/jpg" %>
+
+                    <%= f.label :product_name %>
+                    <%= f.text_field :product_name %>
+
+                    <%= f.label :price %>
+                    <%= f.text_field :price %>
+
+                    <%= f.label :description %>
+                    <%= f.text_field :description %>
+
+                    <%= f.label :quantity %>
+                    <%= f.text_field :quantity %>
+                  </div>
+                  <div class="modal-footer">
+                    <%= f.submit %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <%= render "product" %>
+</div>

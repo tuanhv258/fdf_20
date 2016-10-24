@@ -32,11 +32,23 @@ en:
       signin: "Sign In"
       signout: "Sign Out"
       edit_profile: "Edit Profile"
+      product: "Products"
   pages:
     home:
       fooddrink: "Food & Drink"
       text: "Parallax is an effect where the background content or image in this case,
         is moved at a different speed than the foreground content while scrolling."
+  products:
+    index:
+      create_product: "Create Product"
+      list_product: "List Product"
+    product:
+      index: "Index"
+      image: "Image"
+      product_name: "Product Name"
+      description: "Description"
+      price: "Price"
+      quantity: "Quantity"
   devise:
     sessions:
       new:
@@ -69,6 +81,10 @@ en:
     userscontroller:
       candestroy: "Have Destroyed"
       cantdestroy: "Can't Destroy"
+      usernotfound: "User not found"
+    productscontroller:
+      addproductsuccess: "Add Product Successful!"
+      addproductnotsuccess: "Add Product Not Successful!"
   categories:
     add:
       create: "Create new category"
