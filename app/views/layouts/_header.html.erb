@@ -13,7 +13,13 @@
         <li><%= link_to t(".signup"), new_user_registration_path %></li>
       <% else %>
         <li>
-          <%= link_to(current_user.fullname, "#") %>
+          <span id="show" onclick="openNav()"><%= current_user.fullname %></span>
+          <div id="mySidenav" class="sidenav">
+            <a id="hide" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <%= link_to current_user.fullname, "#" %>
+            <%= link_to current_user.email, "#" %>
+            <%= link_to t(".edit_profile"), edit_user_registration_path %>
+          </div>
         </li>
         <li>
           <%= link_to t(".signout"), destroy_user_session_path,

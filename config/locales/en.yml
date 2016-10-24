@@ -44,6 +44,13 @@ en:
     registrations:
       new:
         signup: "Sign Up"
+      edit:
+        edit_title: "Edit"
+        leave_blank: "(leave blank if you don't want to change it)"
+        minimum: "characters minimum"
+        weneed: "(we need your current password to confirm your changes)"
+        update: "Update"
+        back: "Back"
     shared:
       _link:
         signup: "Sign Up"
