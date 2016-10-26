@@ -18,3 +18,4 @@
 //= require jquery.turbolinks
 //= require materialize
 //= require materialize/extras/nouislider
+//= require social-share-button

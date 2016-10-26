@@ -79,5 +79,15 @@ en:
       index: "Index"
       name: "Name"
       delete: "Delete"
+      update: "Update"
+      checkdelete: "Check Delete"
       numofpro: "Number of products"
       numofsuggest: "Number of suggests"
+      updatebtn: "Update"
+      closebtn: "Close"
+    update:
+      updatesuccess: "Update success"
+      updatefail: "Update failed"
+    destroy:
+      deletesuccess: "Delete Success"
+      deleteerror: "Delete %{category_id} Failed"
