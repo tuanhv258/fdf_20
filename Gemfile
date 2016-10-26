@@ -19,6 +19,9 @@ gem "faker", "1.6.3"
 gem "kaminari"
 gem "bootstrap-kaminari-views"
 gem "bootstrap-sass", "3.3.6"
+gem "cancancan"
+gem "ransack"
+gem "social-share-button"
 
 group :development, :test do
   gem "byebug"

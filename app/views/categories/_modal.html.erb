@@ -15,11 +15,5 @@
   </div>
   <div class="modal-footer">
     <a class="modal-action modal-close waves-effect waves-green btn-flat"><%= t ".closebtn" %></a>
-    <a class="waves-effect waves-yellow btn yellow modal-trigger" onclick="close_modal('modal_<%= object.id %>')"
-      data-target="modal_<%= object.id %>_update"><%= t ".updatebtn" %></a>
   </div>
-</div>
-
-<div id="modal_<%= object.id %>_update" class="modal modal-fixed-footer">
-  <%= render "categories/edit", object: object %>
 </div>

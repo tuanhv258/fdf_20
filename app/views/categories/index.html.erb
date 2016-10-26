@@ -32,7 +32,7 @@
   </thead>
   <tbody>
     <% @categories.each_with_index do |category, index| %>
-      <tr >
+      <tr>
         <td  data-category="<%= category.id %>" data-target="modal_<%= category.id %>"
           class="modal-trigger show-detail">
           <% if params[:page] ||= 1 %>
