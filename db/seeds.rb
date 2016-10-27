@@ -11,3 +11,8 @@ end
   User.create!(fullname: name, email: email, phone_number: "0979797979",
     password: password, password_confirmation: password)
 end
+
+100.times do|n|
+  name = Faker::Beer.name
+  Product.create!(product_name: name)
+end

@@ -14,12 +14,15 @@
         <li><%= link_to t(".signin"), new_user_session_path %></li>
         <li><%= link_to t(".signup"), new_user_registration_path %></li>
       <% else %>
+        <% if can? :index, @product %>
+          <li><%= link_to t(".product"), products_path %></li>
+        <% end %>
         <li>
           <span id="show"><%= current_user.fullname %></span>
           <div id="mySidenav" class="sidenav">
             <%= link_to "&times;".html_safe, "javascript:void(0)", id: "hide", class: "closebtn" %>
             <%= link_to t(".edit_profile"), edit_user_registration_path %>
-            <% if can? :show, @user %>
+            <% if can? :index, @user %>
               <%= link_to t(".show_list_user"), users_path %>
             <% end %>
           </div>

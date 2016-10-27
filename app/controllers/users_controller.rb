@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @users = User.select(:id, :fullname, :email).page params[:page]
   end
@@ -6,10 +8,13 @@ class UsersController < ApplicationController
   def destroy
     user = User.find_by id: params[:id]
     if user.present?
-      user.destroy
-      redirect_to users_path, notice: (t ".candestroy")
+      if user.destroy
+        redirect_to :back, notice: (t ".candestroy")
+      else
+        redirect_to :back, notice: (t ".cantdestroy")
+      end
     else
-      redirect_to users_path, notice: (t ".cantdestroy")
+      redirect_to :back, notice: (t ".usernotfound")
     end
   end
 end
