@@ -56,6 +56,19 @@ en:
         signup: "Sign Up"
         signin: "Sign In"
         forgot: "Forgot your password?"
+  users:
+    index:
+      index: "Index"
+      fullname: "Fullname"
+      email: "Email"
+      delete: "Delete"
+      listuser: "List Users"
+    user:
+      areyou: "Are you sure ???"
+  controllers:
+    userscontroller:
+      candestroy: "Have Destroyed"
+      cantdestroy: "Can't Destroy"
   categories:
     add:
       create: "Create new category"

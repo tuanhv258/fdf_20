@@ -1,0 +1,16 @@
+<% @users.each_with_index do |user,index| %>
+  <tr>
+  <td>
+    <% if params[:page] ||= 1 %>
+      <%= index_for params[:page], index, Settings.categories_per_page %>
+    <% end %>
+  </td>
+  <td><%= user.fullname %></td>
+  <td><%= user.email %></td>
+  <td>
+    <%= link_to t(".delete"), user_path(user), method: :delete,
+      class: "btn btn-danger btn-xs",
+      data: {confirm: t(".areyou")}, class: "fa fa-trash" %>
+  </td>
+  </tr>
+<% end %>

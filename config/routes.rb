@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get "/pages/:page" => "pages#show"
   root "pages#show", page: "home"
 
-  resources :categories, expect: :destroy
   resource :categories, only: :destroy
+  resources :categories, only: [:create, :index, :update]
+  resources :users, only: [:index, :destroy]
 end

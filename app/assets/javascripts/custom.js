@@ -33,3 +33,14 @@ function closeNav() {
   $('#main').removeClass('show-myMain');
   $('body').removeClass('show-myBody');
 }
+
+$(document).ready(function(){
+  $('#show').click(function(){
+    openNav();
+  });
+
+  $('#hide').click(function(){
+    closeNav();
+  });
+});
+
