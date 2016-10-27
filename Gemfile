@@ -23,7 +23,7 @@ gem "bootstrap-sass", "3.3.6"
 gem "cancancan"
 gem "ransack"
 gem "social-share-button"
-
+gem "i18n-js", ">= 3.0.0.rc11"
 group :development, :test do
   gem "byebug"
 end

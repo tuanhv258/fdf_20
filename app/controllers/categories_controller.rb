@@ -4,24 +4,31 @@ class CategoriesController < ApplicationController
     @category = Category.new category_params
     if @category.save
       flash[:success] = t ".success"
-      redirect_to categories_path
+      success = t ".success"
     else
-      flash[:danger] = t ".failed"
-      render :new
+      failed = "fail"
     end
+    render json: {
+      success: success, fail: failed
+    }
   end
 
   def index
-    @categories = Category
-      .select(:id, :category_name, :description)
-      .includes(:products).page(params[:page])
+    @q = Category.ransack params[:q]
+    @categories = @q.result.includes(:products).page(params[:page])
       .per Settings.categories_per_page
     @category = Category.new
-
   end
 
   def update
-
+    @category.update_attributes category_params
+    if @category.save
+      flash[:success] = t ".updatesuccess"
+      redirect_to :back
+    else
+      flash[:danger] = t ".updatefail"
+      redirect_to :back
+    end
   end
 
   private

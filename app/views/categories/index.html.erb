@@ -1,18 +1,25 @@
 <h4 class="condensed light"><%= t ".cat" %></h4>
 
+<div class="search-form">
+  <%= search_form_for @q do |f| %>
+    <div class="field">
+      <%= f.text_field :category_name_cont, class: "form-control",
+        placeholder: t(".search"), id: "size-search" %>
+    </div>
+  <% end %>
+</div>
 <div class="fixed-action-btn horizontal click-to-toggle size">
   <a class="btn-floating btn-large red">
     <i class="fa fa-bars" aria-hidden="true"></i>
   </a>
   <ul>
     <li>
-      <a class="btn-floating red check-delete disabled">
+      <a class="btn-floating waves-effect waves-light red check-delete disabled">
         <i class="fa fa-trash" aria-hidden="true"></i>
       </a>
     </li>
     <li>
-      <a class="btn-floating green modal-trigger" onclick="add_cat()"
-        data-target="modal_add">
+      <a class="btn-floating green modal-trigger add_cat" data-target="modal_add">
         <i class="fa fa-plus" aria-hidden="true"></i>
       </a>
     </li>
@@ -21,41 +28,69 @@
 <div id="modal_add" class="modal modal-fixed-footer">
   <%= render "categories/add", object: @category %>
 </div>
-<table class="highlight bordered">
+<table class="highlight bordered" id="tbl_category">
   <thead class="yellow darken-4">
   <tr>
     <th><%= t ".index" %></th>
     <th><%= t ".name" %></th>
     <th><%= t ".numofpro" %></th>
-    <th><%= t ".delete" %></th>
+    <th><%= t ".checkdelete" %></th>
+    <th><%= t ".update" %></th>
+    <th><%= t ".share" %></th>
   </tr>
   </thead>
   <tbody>
     <% @categories.each_with_index do |category, index| %>
-      <tr>
-        <td  data-category="<%= category.id %>" data-target="modal_<%= category.id %>"
+      <tr data-category="<%= category.id %>" data-target="modal_<%= category.id %>"
           class="modal-trigger show-detail">
+        <td>
           <% if params[:page] ||= 1 %>
             <%= index_for params[:page], index, Settings.categories_per_page %>
           <% end %>
-        </td >
-        <td data-category="<%= category.id %>" data-target="modal_<%= category.id %>"
-          class="modal-trigger show-detail"><%= category.category_name %>
         </td>
-        <td data-category="<%= category.id %>" data-target="modal_<%= category.id %>"
-          class="modal-trigger show-detail">
+        <td>
+          <%= category.category_name %>
+        </td>
+        <td>
           <%= category.products.length %>
         </td>
         <td>
-          <form>
-            <p>
-              <input type="checkbox" id="check_delete_<%= category.id %>"/>
-              <label></label>
-            </p>
-          </form>
+          <div class="delete" data-check="<%= category.id %>">
+            <input type="checkbox" id="check_delete_<%= category.id %>"
+              name="check_delete"/>
+            <label for="check_delete_<%= category.id %>"></label>
+          </div>
+        </td>
+        <td>
+          <a class="btn-floating waves-effect waves-light blue update modal-trigger"
+            data-check="<%= category.id %>"
+            data-target="modal_<%= category.id %>_update">
+            <i class="fa fa-pencil" aria-hidden="true"></i></a>
+        </td>
+        <td>
+          <%= social_share_button_tag category.category_name %>
         </td>
       </tr>
       <%= render "categories/modal", object: category %>
+      <div id="modal_<%= category.id %>_update" class="modal
+        modal-fixed-footer" data-close="<%= category.id %>">
+          <div class="modal-header">
+            <div class="modal-title">
+              <h5 class="thin"><%= t ".update" %></h5>
+            </div>
+          </div>
+          <div class="modal-content">
+            <%= form_for category do |f| %>
+              <%= f.label :category_name %>
+              <%= f.text_field :category_name, class: "form-control" %>
+              <%= f.label :description %>
+              <%= f.text_field :description, class: "form-control" %>
+              <%= f.submit t(".updatebtn"), class: "btn green" %>
+              <a class="modal-action modal-close waves-effect btn waves-red
+              red"><%= t ".closebtn" %></a>
+          <% end %>
+          </div>
+      </div>
     <% end %>
   </tbody>
 </table>

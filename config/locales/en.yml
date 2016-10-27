@@ -98,6 +98,8 @@ en:
       numofsuggest: "Number of suggests"
       updatebtn: "Update"
       closebtn: "Close"
+      search: "Search"
+      share: "Share"
     update:
       updatesuccess: "Update success"
       updatefail: "Update failed"

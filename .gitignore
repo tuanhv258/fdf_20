@@ -29,3 +29,9 @@ app/assets/javascripts/i18n/translations.js
 # Ignore application configuration
 /config/application.yml
 .byebug_history
+app/assets/javascript/i18n/en.js
+public/javascripts/translations.js
+log/
+test/
+tmp/
+/app/assets/javascripts/i18n/en.js

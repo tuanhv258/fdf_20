@@ -19,3 +19,4 @@
 //= require materialize
 //= require materialize/extras/nouislider
 //= require social-share-button
+//= require i18n/translations
