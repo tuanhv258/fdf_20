@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post '/rate', to: 'rater#create', as: 'rate'
   devise_for :users
   get "/pages/:page" => "pages#show"
   root "pages#show", page: "home"

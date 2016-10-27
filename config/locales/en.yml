@@ -20,6 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  js:
+    success: "Create successful"
   hello: "Hello world"
   layouts:
     footer:
@@ -33,6 +35,7 @@ en:
       signout: "Sign Out"
       edit_profile: "Edit Profile"
       product: "Products"
+      category: "Category"
   pages:
     home:
       fooddrink: "Food & Drink"
@@ -122,3 +125,12 @@ en:
     destroy:
       deletesuccess: "Delete Success"
       deleteerror: "Delete %{category_id} Failed"
+  products:
+    user:
+      pro: "Product"
+      search: "Search"
+      all: "All"
+      quality: "Quality: "
+      price: "Price: "
+      service: "Service: "
+      agree: "Agree"

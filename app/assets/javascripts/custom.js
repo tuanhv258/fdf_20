@@ -18,7 +18,7 @@ $(document).on('ready page:load', function () {
       url: "/categories/",
       data: data,
       success: function () {
-        Materialize.toast('Create successful', 2000);
+        Materialize.toast(I18n.t('js.success'), 2000);
         $('#form_add')[0].reset();
       }
     });
@@ -98,6 +98,15 @@ $(document).on('ready page:load', function () {
         alert("Error!");
       }
     });
+  });
+
+  $('.rate').click(function(){
+    var id = $(this).data('id');
+    $('#modal_' + id).openModal();
+  });
+  $('.comment').click(function(){
+    var id = $(this).data('id');
+    $('#modal_' + id + '_comment').openModal();
   });
 });
 

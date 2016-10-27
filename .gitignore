@@ -35,3 +35,5 @@ log/
 test/
 tmp/
 /app/assets/javascripts/i18n/en.js
+/public/javascripts/en.js
+/public/javascripts/i18n.js

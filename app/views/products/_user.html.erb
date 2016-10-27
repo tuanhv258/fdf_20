@@ -1,0 +1,90 @@
+<h4 class="condensed light"><%= t ".pro" %></h4>
+
+<div class="search-form row">
+  <%= search_form_for @q, html: {id: "search-form"} do |f| %>
+    <div class="field col s4">
+      <%= f.text_field :product_name_cont, class: "form-control",
+         placeholder: t(".search") %>
+    </div>
+      <div class="col s4">
+        <%= f.collection_select :category_id_eq, @categories, :id,
+          :category_name, {include_blank: t(".all")}, class: "form-control",
+            id: "size-search-cate" %>
+      </div>
+      <%= submit_tag t(".search"),
+         class: "btn btn-default btn-search-top clear col s1 " %>
+  <% end %>
+</div>
+<div class="row">
+  <% @products.each_with_index do |product, index| %>
+    <div class="col s12 m12 l4">
+      <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <%= image_tag(product.image.url , class: "activator",
+            size: "70x70") if product.image?  %>
+        </div>
+        <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4"><%=
+          product.product_name %>
+          <a class="btn-floating btn-small waves-effect waves-light yellow
+          right">
+            <i class="fa fa-info right" aria-hidden="true"></i>
+          </a>
+
+        </span>
+          <p>
+            <a class="btn-floating btn-small waves-effect waves-light red
+              tooltipped modal-trigger rate" data-trigger="modal_<%= product.id
+              %>" data-id="<%= product.id %>"
+              data-position="bottom" data-delay="50"
+              data-tooltip="<%= @product.rates("quality").count %> rate">
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+            </a>
+            <a class="btn-floating btn-small waves-effect waves-light blue
+              comment" data-trigger="modal_<%= product.id%>_comment"
+              data-id="<%= product.id %>">
+              <i class="fa fa-comments-o" aria-hidden="true"></i>
+            </a>
+            <a class="btn-floating btn-small waves-effect waves-light green">
+              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            </a>
+          </p>
+        </div>
+        <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">
+          <%= product.product_name %><i class="fa fa-times right"
+            aria-hidden="true"></i>
+        </span>
+          <p><%= product.description%></p>
+        </div>
+      </div>
+    </div>
+    <div id="modal_<%= product.id %>" class="modal modal-fixed-footer">
+      <div class="modal-content">
+        <h4 class="thin">Rating</h4>
+        <%= t ".quality" %><%= rating_for @product, "quality", star: Settings
+          .star %>
+        <%= t ".price" %><%= rating_for @product, "quality", star: Settings
+          .star %>
+        <%= t ".service" %><%= rating_for @product, "quality", star: Settings
+          .stars %>
+      </div>
+      <div class="modal-footer">
+        <a class="modal-action modal-close waves-effect waves-green btn-flat ">
+          <%= t ".agree"%>
+        </a>
+      </div>
+    </div>
+
+    <div id="modal_<%= product.id %>_comment" class="modal modal-fixed-footer">
+      <div class="modal-content">
+        <h4 class="thin"><%= t ".comment" %></h4>
+      </div>
+      <div class="modal-footer">
+        <a class="modal-action modal-close waves-effect waves-green btn-flat ">
+          <%= t ".agree" %>
+        </a>
+      </div>
+    </div>
+  <% end %>
+</div>

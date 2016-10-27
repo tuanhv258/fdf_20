@@ -3,10 +3,10 @@ class ProductsController < ApplicationController
   before_action :load_categories, only: :index
 
   def index
+    @q = Product.ransack params[:q]
     @product = Product.new
-    @products = Product.select(:image, :product_name, :price,
-      :description, :quantity,
-      :category_id).page(params[:page]).per Settings.product_per_page
+    @products = @q.result.page(params[:page])
+      .per Settings.product_per_page
   end
 
   def create

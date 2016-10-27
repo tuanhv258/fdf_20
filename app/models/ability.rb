@@ -8,6 +8,7 @@ class Ability
     elsif user.member?
       can :read, Order
       can :create, Order
+      can :index, Product
     else
       can :read, :all
     end
