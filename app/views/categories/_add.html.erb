@@ -4,14 +4,16 @@
   </div>
 </div>
 <div class="modal-content">
-  <%= form_for object do |f|%>
+  <%= form_for object, html: {id: "form_add"} do |f|%>
     <%= f.label :category_name %>
     <%= f.text_field :category_name, class: "form-control" %>
     <%= f.label :description %>
     <%= f.text_field :description, class: "form-control" %>
-    <%= f.submit t(".createbtn"), class: "btn waves-effect waves-light" %>
-    <%= link_to t(".createandcontinue"), "", class: "modal-action
-      modal-close waves-effect btn waves-red red close create-and-continue"%>
-    <%= link_to t(".closebtn"), "", class: "modal-action modal-close waves-effect btn waves-red red close"%>
+    <%= link_to t(".createbtn"), "", class: "waves-effect btn waves-blue
+      blue close create"%>
+    <%= link_to t(".createandcontinue"), "",
+      class: "waves-effect btn waves-red red close create-and-continue"%>
+    <a class="modal-action modal-close waves-effect btn waves-red red
+      close"><%= t(".closebtn") %></a>
   <% end %>
 </div>
