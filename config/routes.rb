@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :destroy]
   resource :delete_categories, only: :destroy
   resources :products, only: [:index, :create]
+  resources :comments
 end
