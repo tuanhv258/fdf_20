@@ -88,6 +88,9 @@ en:
     productscontroller:
       addproductsuccess: "Add Product Successful!"
       addproductnotsuccess: "Add Product Not Successful!"
+    commentscontroller:
+      success: "Create success"
+      fail: "Create fail"
   categories:
     add:
       create: "Create new category"
@@ -134,3 +137,5 @@ en:
       price: "Price: "
       service: "Service: "
       agree: "Agree"
+      rating: "Rating"
+      send: "Send"

@@ -27,10 +27,9 @@
         <span class="card-title activator grey-text text-darken-4"><%=
           product.product_name %>
           <a class="btn-floating btn-small waves-effect waves-light yellow
-          right">
+            right">
             <i class="fa fa-info right" aria-hidden="true"></i>
           </a>
-
         </span>
           <p>
             <a class="btn-floating btn-small waves-effect waves-light red
@@ -61,7 +60,7 @@
     </div>
     <div id="modal_<%= product.id %>" class="modal modal-fixed-footer">
       <div class="modal-content">
-        <h4 class="thin">Rating</h4>
+        <h4 class="thin"><%= t ".rating" %></h4>
         <%= t ".quality" %><%= rating_for @product, "quality", star: Settings
           .star %>
         <%= t ".price" %><%= rating_for @product, "quality", star: Settings
@@ -79,11 +78,29 @@
     <div id="modal_<%= product.id %>_comment" class="modal modal-fixed-footer">
       <div class="modal-content">
         <h4 class="thin"><%= t ".comment" %></h4>
-      </div>
-      <div class="modal-footer">
-        <a class="modal-action modal-close waves-effect waves-green btn-flat ">
-          <%= t ".agree" %>
-        </a>
+        <blockquote class="thin"><%= product.product_name %></blockquote>
+        <% product.comments.each do |comment, index| %>
+          <p class="comment_content"><%= comment.content %></p>
+        <% end %>
+        <div class="row">
+          <div class="row">
+            <div class="input-field col s6">
+              <i class="fa fa-search prefix" aria-hidden="true"></i>
+              <textarea id="icon_prefix_<%= product.id %>"
+                class="materialize-textarea"></textarea>
+              <label for="icon_prefix_<%= product.id %>">
+                <%= t ".comment" %>
+              </label>
+            </div>
+          </div>
+          <button class="btn waves-effect waves-light"
+            id="send_comment_<%= product.id%>"><%= t ".send" %>
+            <i class="fa fa-paper-plane" aria-hidden="true"></i>
+          </button>
+          <a class="modal-action modal-close waves-effect waves-green btn-flat ">
+            <%= t ".agree" %>
+          </a>
+        </div>
       </div>
     </div>
   <% end %>

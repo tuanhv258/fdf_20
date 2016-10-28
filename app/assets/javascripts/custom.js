@@ -26,7 +26,6 @@ $(document).on('ready page:load', function () {
 
   $('.create').click(function () {
     var data = $('#form_add').serialize();
-    console.log(data);
     $.ajax({
       type: "POST",
       url: "/categories",
@@ -104,9 +103,30 @@ $(document).on('ready page:load', function () {
     var id = $(this).data('id');
     $('#modal_' + id).openModal();
   });
+
   $('.comment').click(function(){
     var id = $(this).data('id');
     $('#modal_' + id + '_comment').openModal();
+    $('#send_comment_'+ id).click(function(){
+      var content = $('#icon_prefix_' + id).val();
+      $.ajax({
+        url: 'comments',
+        method: 'POST',
+        data: {
+          comment:
+          {content: content, product_id: id}
+        },
+        dataType: 'JSON',
+        success: function(response){
+          $('#icon_prefix_' + id).val('');
+          $('.comment-content').last().append('<p' +
+            ' class="comment-content">content</p>');
+        },
+        error: function(){
+          alert("Error!");
+        }
+      });
+    });
   });
 });
 
