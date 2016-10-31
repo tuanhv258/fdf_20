@@ -1,13 +1,19 @@
 <h4 class="condensed light"><%= t ".cat" %></h4>
-
-<div class="search-form">
-  <%= search_form_for @q do |f| %>
-    <div class="field">
-      <%= f.text_field :category_name_cont, class: "form-control",
-        placeholder: t(".search"), id: "size-search" %>
-    </div>
-  <% end %>
-</div>
+<dinv class="row">
+  <div class="search-form col s10">
+    <%= search_form_for @q do |f| %>
+      <div class="field">
+        <%= f.text_field :category_name_cont, class: "form-control",
+          placeholder: t(".search"), id: "size-search" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col s2">
+    <%= link_to [@category, format: :xls] do %>
+      <%= button_tag t(".export"), class: "btn green" %>
+    <% end %>
+  </div>
+</dinv>
 <div class="fixed-action-btn horizontal click-to-toggle size">
   <a class="btn-floating btn-large red">
     <i class="fa fa-bars" aria-hidden="true"></i>

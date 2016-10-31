@@ -22,6 +22,10 @@
 en:
   js:
     success: "Create successful"
+    delete: "You deleted: "
+    cannot: "You can not delete: "
+    error: "Error!"
+    confirm: "Do you want to reject this product?"
   hello: "Hello world"
   layouts:
     footer:
@@ -36,6 +40,7 @@ en:
       edit_profile: "Edit Profile"
       product: "Products"
       category: "Category"
+      suggest: "Suggest"
   pages:
     home:
       fooddrink: "Food & Drink"
@@ -91,6 +96,12 @@ en:
     commentscontroller:
       success: "Create success"
       fail: "Create fail"
+    suggestproductscontroller:
+      suggest: "Suggest new product"
+      updatesuccess: "Update successful"
+      updatefail: "Update fail"
+      success: "Delete Success"
+      danger: "Delete Fail"
   categories:
     add:
       create: "Create new category"
@@ -122,6 +133,7 @@ en:
       closebtn: "Close"
       search: "Search"
       share: "Share"
+      export: "Export excel"
     update:
       updatesuccess: "Update success"
       updatefail: "Update failed"
@@ -139,3 +151,31 @@ en:
       agree: "Agree"
       rating: "Rating"
       send: "Send"
+  suggest_products:
+    new:
+      createbtn: "Send"
+      createandcontinue: "Send and create continue"
+    create:
+      success: "Create success"
+      fail: "Create fail"
+    index:
+      name: "Product Name"
+      index: "Index"
+      description: "Description"
+      price: "Price"
+      status: "Status"
+      category: "Category Name"
+      action: "Action"
+      share: "Share"
+      approve: "Approved"
+      reject: "Rejected"
+      approvemessage: "Add suggest"
+      search: "Search"
+      suggest: "Suggest"
+    approve:
+      approve: "Approve"
+    update:
+      updatesuccess: "Update successful"
+    destroy:
+      danger: "Delete Failed"
+      success: "Delete Successful"

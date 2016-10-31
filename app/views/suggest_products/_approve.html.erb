@@ -1,0 +1,15 @@
+<%= form_for object, method: :put do |f|%>
+    <%= f.label :suggest_product %>
+    <%= f.text_field :product_name, class: "form-control" %>
+    <%= f.label :product_description %>
+    <%= f.text_field :product_des, class: "form-control" %>
+    <%= f.label :price %>
+    <%= f.text_field :product_price, class: "form-control" %>
+    <%= f.label :category %>
+    <%= f.select( :category_id, options_for_select(@categories.collect{
+      |category|[category.category_name, category.id]}, params[:category_id]),
+      include_blank: Settings.all, class: "form-group") %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :status, value: 1 %>
+    <%= f.submit t(".approve"), class: "form-control btn green" %>
+<% end %>

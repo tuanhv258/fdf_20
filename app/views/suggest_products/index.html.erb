@@ -1,0 +1,81 @@
+<h4 class="condensed light"><%= t ".suggest" %></h4>
+
+<div class="row">
+  <div class="search-form col s10">
+    <%= search_form_for @q do |f| %>
+      <div class="field">
+        <%= f.text_field :product_name_cont, class: "form-control",
+        placeholder: t(".search"), id: "size-search" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col s2">
+    <%= link_to "Export", suggest_products_path(format: :xls),
+      class: "btn green" %>
+  </div>
+</div>
+<table class="highlight bordered" id="tbl_category">
+  <thead class="yellow darken-4">
+    <tr>
+      <th><%= t ".index" %></th>
+      <th><%= t ".name" %></th>
+      <th><%= t ".description" %></th>
+      <th><%= t ".price" %></th>
+      <th><%= t ".category" %></th>
+      <th><%= t ".status" %></th>
+      <th><%= t ".share" %></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @suggests.each_with_index do |suggest, index| %>
+    <tr>
+      <td>
+        <% if params[:page] ||= 1 %>
+          <%= index_for params[:page], index, Settings.categories_per_page %>
+        <% end %>
+      </td>
+      <td>
+        <%= suggest.product_name %>
+      </td>
+      <td>
+        <%= suggest.product_des %>
+      </td>
+      <td>
+        <%= suggest.product_price %>
+      </td>
+      <td>
+        <%= suggest.category_id %>
+      </td>
+      <td>
+        <% if suggest.status != 0 %>
+          <a class="waves-effect waves-light red btn modal-trigger reject"
+            data-id="<%= suggest.id %>">
+            <%= t ".reject" %>
+          </a>
+        <% else %>
+          <a class="waves-effect waves-light green btn modal-trigger approve"
+            data-target="approve_suggest_<%= suggest.id %>">
+            <%= t ".approve" %>
+          </a>
+        <% end %>
+      </td>
+      <td>
+        <%= social_share_button_tag suggest.product_name %>
+      </td>
+    </tr>
+    <div id="approve_suggest_<%= suggest.id %>" class="modal
+      modal-fixed-footer">
+      <div class="modal-header">
+        <div class="modal-title">
+          <h5 class="thin"><%= t ".approvemessage" %></h5>
+        </div>
+      </div>
+      <div class="modal-content">
+        <%= render "suggest_products/approve", object: suggest%>
+      </div>
+    </div>
+
+  <% end %>
+  </tbody>
+</table>
+<%= paginate @suggests %>

@@ -11,4 +11,5 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer
       .permit(:sign_up)  {|u| u.permit(:fullname, :email,:password, :password_confirmation)}
   end
+
 end

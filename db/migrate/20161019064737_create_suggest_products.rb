@@ -6,7 +6,7 @@ class CreateSuggestProducts < ActiveRecord::Migration
       t.string :product_name
       t.string :product_des
       t.float :product_price
-      t.integer :status
+      t.integer :status, default: 0
 
       t.timestamps null: false
     end

@@ -1,0 +1,22 @@
+<h4 class="thin"><%t ".suggest" %></h4>
+<div class="row">
+  <div class="card-panel col s5 offset-s4">
+    <h4 class="header2 thin ">Suggest form</h4>
+    <%= form_for @suggest do |f|%>
+      <%= f.label :suggest_product %>
+      <%= f.text_field :product_name, class: "form-control" %>
+      <%= f.label :product_description %>
+      <%= f.text_field :product_des, class: "form-control" %>
+      <%= f.label :price %>
+      <%= f.text_field :product_price, class: "form-control" %>
+      <%= f.label :category %>
+      <%= f.select( :category_id, options_for_select(@categories.collect{
+        |category|[category.category_name, category.id]}, params[:category_id]),
+        include_blank: Settings.all, class: "form-group") %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.submit t(".createbtn"), class: "form-control waves-effect btn
+        waves-green green" %>
+    <% end %>
+    <br>
+  </div>
+</div>

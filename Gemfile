@@ -27,6 +27,7 @@ gem "ransack"
 gem "social-share-button"
 gem "i18n-js", ">= 3.0.0.rc11"
 gem "ratyrate"
+gem "to_xls-rails"
 group :development, :test do
   gem "byebug"
 end
