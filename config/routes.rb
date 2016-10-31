@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resource :delete_categories, only: :destroy
   resources :products, only: [:index, :create]
   resources :comments
+  resources :suggest_products, only: [:index, :create, :new]
 end

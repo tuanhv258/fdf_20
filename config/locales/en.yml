@@ -22,6 +22,9 @@
 en:
   js:
     success: "Create successful"
+    delete: "You deleted: "
+    cannot: "You can not delete: "
+    error: "Error!"
   hello: "Hello world"
   layouts:
     footer:
@@ -36,6 +39,7 @@ en:
       edit_profile: "Edit Profile"
       product: "Products"
       category: "Category"
+      suggest: "Suggest"
   pages:
     home:
       fooddrink: "Food & Drink"
@@ -91,6 +95,8 @@ en:
     commentscontroller:
       success: "Create success"
       fail: "Create fail"
+    suggestproductscontroller:
+      suggest: "Suggest new product"
   categories:
     add:
       create: "Create new category"
@@ -139,3 +145,21 @@ en:
       agree: "Agree"
       rating: "Rating"
       send: "Send"
+  suggest_products:
+    new:
+      createbtn: "Send"
+      createandcontinue: "Send and create continue"
+    create:
+      success: "Create success"
+      fail: "Create fail"
+    index:
+      name: "Product Name"
+      index: "Index"
+      description: "Description"
+      price: "Price"
+      status: "Status"
+      category: "Category Name"
+      action: "Action"
+      share: "Share"
+      approve: "Approved"
+      reject: "Rejected"

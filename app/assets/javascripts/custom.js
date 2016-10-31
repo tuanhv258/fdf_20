@@ -90,11 +90,11 @@ $(document).on('ready page:load', function () {
       data: {ids: ids},
       dataType: 'JSON',
       success: function (data) {
-        Materialize.toast('You deleted: ' + data.success, 4000);
-        Materialize.toast('You could not delete: ' + data.fails, 4000);
+        Materialize.toast(I18n.t("js.delete") + data.success, 4000);
+        Materialize.toast(I18n.t("js.cannot") + data.fails, 4000);
         location.reload();
       }, error: function (data) {
-        alert("Error!");
+        alert(I18n.t("js.error"));
       }
     });
   });
@@ -123,7 +123,7 @@ $(document).on('ready page:load', function () {
             ' class="comment-content">content</p>');
         },
         error: function(){
-          alert("Error!");
+          alert(I18n.t("js.error"));
         }
       });
     });

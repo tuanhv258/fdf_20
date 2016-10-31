@@ -1,0 +1,51 @@
+<table class="highlight bordered" id="tbl_category">
+  <thead class="yellow darken-4">
+  <tr>
+    <th><%= t ".index" %></th>
+    <th><%= t ".name" %></th>
+    <th><%= t ".description" %></th>
+    <th><%= t ".price" %></th>
+    <th><%= t ".category" %></th>
+    <th><%= t ".status" %></th>
+    <th><%= t ".share" %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @suggests.each_with_index do |suggest, index| %>
+    <tr>
+      <td>
+        <% if params[:page] ||= 1 %>
+          <%= index_for params[:page], index, Settings.categories_per_page %>
+        <% end %>
+      </td>
+      <td>
+        <%= suggest.product_name %>
+      </td>
+      <td>
+        <%= suggest.product_des %>
+      </td>
+      <td>
+        <%= suggest.product_price %>
+      </td>
+      <td>
+        <%= suggest.category_id %>
+      </td>
+      <td>
+        <% if suggest.status != 0 %>
+          <a class="waves-effect waves-light green btn">
+            <%= t ".approve" %>
+          </a>
+        <% else %>
+          <a class="waves-effect waves-light red btn">
+            <%= t ".reject" %>
+          </a>
+        <% end %>
+      </td>
+      <td>
+        <%= social_share_button_tag suggest.product_name %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= paginate @suggests %>

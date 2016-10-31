@@ -13,6 +13,14 @@
       <% else %>
         <li><%= link_to t(".product"), products_path %></li>
         <li><%= link_to t(".category"), categories_path %></li>
+        <% if current_user.admin? %>
+          <li><%= link_to t(".suggest"), new_suggest_product_path %></li>
+        <% else %>
+          <li>
+            <% concat link_to ("#{t(".suggest")}<span class='badge yellow'>#{
+              check_status.length}</span>").html_safe, suggest_products_path %>
+          </li>
+        <% end %>
         <li>
           <span id="show"><%= current_user.fullname %></span>
           <div id="mySidenav" class="sidenav">

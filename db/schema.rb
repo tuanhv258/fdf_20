@@ -105,9 +105,9 @@ ActiveRecord::Schema.define(version: 20161027041603) do
     t.string   "product_name"
     t.string   "product_des"
     t.float    "product_price"
-    t.integer  "status"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "status",        default: 0
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "users", force: :cascade do |t|
